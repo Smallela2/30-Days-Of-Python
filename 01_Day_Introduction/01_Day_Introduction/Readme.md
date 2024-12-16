@@ -15,3 +15,5 @@ print(3 / 2)   # Precise division where decimals matter.
 print(3 ** 2)  # Powers, scientific computations.
 print(3 % 2)   # Modulo arithmetic, even/odd checks.
 print(3 // 2)  # Integer-based calculations.)
+# Done some programs 
+-----------------Day-1(16/12/24)--------------------------
