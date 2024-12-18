@@ -1,233 +1,182 @@
-📘 Day 3
-Boolean
-Operators
-Assignment Operators
-Arithmetic Operators:
-Comparison Operators
-Logical Operators
-💻 Exercises - Day 3
-📘 Day 3
-Boolean
-A boolean data type represents one of the two values: True or False. The use of these data types will be clear once we start using the comparison operator. The first letter T for True and F for False should be capital unlike JavaScript. Example: Boolean Values
+### **What are Operators?**
+Operators are symbols in Python used to perform operations on variables and values. For example: `+`, `-`, `*`, and `/`.
 
-print(True)
-print(False)
-Operators
-Python language supports several types of operators. In this section, we will focus on few of them.
+---
 
-Assignment Operators
-Assignment operators are used to assign values to variables. Let us take = as an example. Equal sign in mathematics shows that two values are equal, however in Python it means we are storing a value in a certain variable and we call it assignment or a assigning value to a variable. The table below shows the different types of python assignment operators, taken from w3school.
+### **1. Arithmetic Operators**
+Used for mathematical calculations.
 
-Assignment Operators
+| Operator | Description            | Example        | Output |
+|----------|------------------------|----------------|--------|
+| `+`      | Addition               | `5 + 3`        | `8`    |
+| `-`      | Subtraction            | `5 - 3`        | `2`    |
+| `*`      | Multiplication         | `5 * 3`        | `15`   |
+| `/`      | Division (float)       | `5 / 2`        | `2.5`  |
+| `//`     | Floor Division         | `5 // 2`       | `2`    |
+| `%`      | Modulus (Remainder)    | `5 % 2`        | `1`    |
+| `**`     | Exponentiation (Power) | `2 ** 3`       | `8`    |
 
-Arithmetic Operators:
-Addition(+): a + b
-Subtraction(-): a - b
-Multiplication(*): a * b
-Division(/): a / b
-Modulus(%): a % b
-Floor division(//): a // b
-Exponentiation(**): a ** b
-Arithmetic Operators
+**Example Code:**
+```python
+a = 10
+b = 3
 
-Example:Integers
+print(a + b)  # Addition
+print(a - b)  # Subtraction
+print(a * b)  # Multiplication
+print(a / b)  # Division
+print(a // b) # Floor Division
+print(a % b)  # Modulus
+print(a ** b) # Exponentiation
+```
 
-# Arithmetic Operations in Python
-# Integers
+---
 
-print('Addition: ', 1 + 2)        # 3
-print('Subtraction: ', 2 - 1)     # 1
-print('Multiplication: ', 2 * 3)  # 6
-print ('Division: ', 4 / 2)       # 2.0  Division in Python gives floating number
-print('Division: ', 6 / 2)        # 3.0         
-print('Division: ', 7 / 2)        # 3.5
-print('Division without the remainder: ', 7 // 2)   # 3,  gives without the floating number or without the remaining
-print ('Division without the remainder: ',7 // 3)   # 2
-print('Modulus: ', 3 % 2)         # 1, Gives the remainder
-print('Exponentiation: ', 2 ** 3) # 9 it means 2 * 2 * 2
-Example:Floats
+### **2. Comparison (Relational) Operators**
+Used to compare two values. They return `True` or `False`.
 
-# Floating numbers
-print('Floating Point Number, PI', 3.14)
-print('Floating Point Number, gravity', 9.81)
-Example:Complex numbers
+| Operator | Description                  | Example      | Output |
+|----------|------------------------------|--------------|--------|
+| `==`     | Equal to                    | `5 == 5`     | `True` |
+| `!=`     | Not equal to                | `5 != 3`     | `True` |
+| `>`      | Greater than                | `5 > 3`      | `True` |
+| `<`      | Less than                   | `5 < 3`      | `False`|
+| `>=`     | Greater than or equal to    | `5 >= 3`     | `True` |
+| `<=`     | Less than or equal to       | `5 <= 5`     | `True` |
 
-# Complex numbers
-print('Complex number: ', 1 + 1j)
-print('Multiplying complex numbers: ',(1 + 1j) * (1 - 1j))
-Let's declare a variable and assign a number data type. I am going to use single character variable but remember do not develop a habit of declaring such types of variables. Variable names should be all the time mnemonic.
+**Example Code:**
+```python
+x = 7
+y = 10
 
-Example:
+print(x == y)  # Equal to
+print(x != y)  # Not equal to
+print(x > y)   # Greater than
+print(x < y)   # Less than
+print(x >= y)  # Greater than or equal to
+print(x <= y)  # Less than or equal to
+```
 
-# Declaring the variable at the top first
+---
 
-a = 3 # a is a variable name and 3 is an integer data type
-b = 2 # b is a variable name and 3 is an integer data type
+### **3. Logical Operators**
+Used to combine conditional statements.
 
-# Arithmetic operations and assigning the result to a variable
-total = a + b
-diff = a - b
-product = a * b
-division = a / b
-remainder = a % b
-floor_division = a // b
-exponential = a ** b
+| Operator | Description        | Example          | Output |
+|----------|--------------------|------------------|--------|
+| `and`    | Logical AND        | `True and False` | `False`|
+| `or`     | Logical OR         | `True or False`  | `True` |
+| `not`    | Logical NOT        | `not True`       | `False`|
 
-# I should have used sum instead of total but sum is a built-in function - try to avoid overriding built-in functions
-print(total) # if you do not label your print with some string, you never know where the result is coming from
-print('a + b = ', total)
-print('a - b = ', diff)
-print('a * b = ', product)
-print('a / b = ', division)
-print('a % b = ', remainder)
-print('a // b = ', floor_division)
-print('a ** b = ', exponentiation)
-Example:
+**Example Code:**
+```python
+a = True
+b = False
 
-print('== Addition, Subtraction, Multiplication, Division, Modulus ==')
+print(a and b)  # Logical AND
+print(a or b)   # Logical OR
+print(not a)    # Logical NOT
+```
 
-# Declaring values and organizing them together
-num_one = 3
-num_two = 4
+---
 
-# Arithmetic operations
-total = num_one + num_two
-diff = num_two - num_one
-product = num_one * num_two
-div = num_two / num_one
-remainder = num_two % num_one
+### **4. Assignment Operators**
+Used to assign values to variables.
 
-# Printing values with label
-print('total: ', total)
-print('difference: ', diff)
-print('product: ', product)
-print('division: ', div)
-print('remainder: ', remainder)
-Let us start start connecting the dots and start making use of what we already know to calculate (area, volume,density, weight, perimeter, distance, force).
+| Operator | Description              | Example   | Equivalent To |
+|----------|--------------------------|-----------|---------------|
+| `=`      | Assign                  | `x = 5`   | `x = 5`       |
+| `+=`     | Add and assign           | `x += 5`  | `x = x + 5`   |
+| `-=`     | Subtract and assign      | `x -= 5`  | `x = x - 5`   |
+| `*=`     | Multiply and assign      | `x *= 5`  | `x = x * 5`   |
+| `/=`     | Divide and assign        | `x /= 5`  | `x = x / 5`   |
+| `//=`    | Floor divide and assign  | `x //= 5` | `x = x // 5`  |
+| `%=`     | Modulus and assign       | `x %= 5`  | `x = x % 5`   |
+| `**=`    | Exponent and assign      | `x **= 5` | `x = x ** 5`  |
 
-Example:
+**Example Code:**
+```python
+x = 10
+x += 5  # Same as x = x + 5
+print(x)
 
-# Calculating area of a circle
-radius = 10                                 # radius of a circle
-area_of_circle = 3.14 * radius ** 2         # two * sign means exponent or power
-print('Area of a circle:', area_of_circle)
+x *= 2  # Same as x = x * 2
+print(x)
+```
 
-# Calculating area of a rectangle
-length = 10
-width = 20
-area_of_rectangle = length * width
-print('Area of rectangle:', area_of_rectangle)
+---
 
-# Calculating a weight of an object
-mass = 75
-gravity = 9.81
-weight = mass * gravity
-print(weight, 'N')                         # Adding unit to the weight
+### **5. Bitwise Operators**
+Used for operations at the binary level.
 
-# Calculate the density of a liquid
-mass = 75 # in Kg
-volume = 0.075 # in cubic meter
-density = mass / volume # 1000 Kg/m^3
-Comparison Operators
-In programming we compare values, we use comparison operators to compare two values. We check if a value is greater or less or equal to other value. The following table shows Python comparison operators which was taken from w3shool.
+| Operator | Description               | Example   | Output |
+|----------|---------------------------|-----------|--------|
+| `&`      | AND                      | `5 & 3`   | `1`    |
+| `|`      | OR                       | `5 | 3`   | `7`    |
+| `^`      | XOR                      | `5 ^ 3`   | `6`    |
+| `~`      | NOT                      | `~5`      | `-6`   |
+| `<<`     | Left shift               | `5 << 1`  | `10`   |
+| `>>`     | Right shift              | `5 >> 1`  | `2`    |
 
-Comparison Operators Example: Comparison Operators
+**Example Code:**
+```python
+a = 5  # Binary: 0101
+b = 3  # Binary: 0011
 
-print(3 > 2)     # True, because 3 is greater than 2
-print(3 >= 2)    # True, because 3 is greater than 2
-print(3 < 2)     # False,  because 3 is greater than 2
-print(2 < 3)     # True, because 2 is less than 3
-print(2 <= 3)    # True, because 2 is less than 3
-print(3 == 2)    # False, because 3 is not equal to 2
-print(3 != 2)    # True, because 3 is not equal to 2
-print(len('mango') == len('avocado'))  # False
-print(len('mango') != len('avocado'))  # True
-print(len('mango') < len('avocado'))   # True
-print(len('milk') != len('meat'))      # False
-print(len('milk') == len('meat'))      # True
-print(len('tomato') == len('potato'))  # True
-print(len('python') > len('dragon'))   # False
+print(a & b)  # AND
+print(a | b)  # OR
+print(a ^ b)  # XOR
+print(~a)     # NOT
+print(a << 1) # Left shift
+print(a >> 1) # Right shift
+```
 
+---
 
-# Comparing something gives either a True or False
+### **6. Membership Operators**
+Used to test if a value is in a sequence.
 
-print('True == True: ', True == True)
-print('True == False: ', True == False)
-print('False == False:', False == False)
-In addition to the above comparison operator Python uses:
+| Operator | Description             | Example            | Output |
+|----------|-------------------------|--------------------|--------|
+| `in`     | Value is in sequence    | `"a" in "apple"`   | `True` |
+| `not in` | Value is not in sequence| `"b" not in "apple"`| `True`|
 
-is: Returns true if both variables are the same object(x is y)
-is not: Returns true if both variables are not the same object(x is not y)
-in: Returns True if the queried list contains a certain item(x in y)
-not in: Returns True if the queried list doesn't have a certain item(x in y)
-print('1 is 1', 1 is 1)                   # True - because the data values are the same
-print('1 is not 2', 1 is not 2)           # True - because 1 is not 2
-print('A in Asabeneh', 'A' in 'Asabeneh') # True - A found in the string
-print('B in Asabeneh', 'B' in 'Asabeneh') # False - there is no uppercase B
-print('coding' in 'coding for all') # True - because coding for all has the word coding
-print('a in an:', 'a' in 'an')      # True
-print('4 is 2 ** 2:', 4 is 2 ** 2)   # True
-Logical Operators
-Unlike other programming languages python uses keywords and, or and not for logical operators. Logical operators are used to combine conditional statements:
+**Example Code:**
+```python
+fruits = ["apple", "banana", "cherry"]
 
-Logical Operators
+print("apple" in fruits)    # True
+print("grape" not in fruits) # True
+```
 
-print(3 > 2 and 4 > 3) # True - because both statements are true
-print(3 > 2 and 4 < 3) # False - because the second statement is false
-print(3 < 2 and 4 < 3) # False - because both statements are false
-print('True and True: ', True and True)
-print(3 > 2 or 4 > 3)  # True - because both statements are true
-print(3 > 2 or 4 < 3)  # True - because one of the statements is true
-print(3 < 2 or 4 < 3)  # False - because both statements are false
-print('True or False:', True or False)
-print(not 3 > 2)     # False - because 3 > 2 is true, then not True gives False
-print(not True)      # False - Negation, the not operator turns true to false
-print(not False)     # True
-print(not not True)  # True
-print(not not False) # False
-🌕 You have boundless energy. You have just completed day 3 challenges and you are three steps ahead on your way to greatness. Now do some exercises for your brain and your muscles.
+---
 
-💻 Exercises - Day 3
-Declare your age as integer variable
-Declare your height as a float variable
-Declare a variable that store a complex number
-Write a script that prompts the user to enter base and height of the triangle and calculate an area of this triangle (area = 0.5 x b x h).
-    Enter base: 20
-    Enter height: 10
-    The area of the triangle is 100
-Write a script that prompts the user to enter side a, side b, and side c of the triangle. Calculate the perimeter of the triangle (perimeter = a + b + c).
-Enter side a: 5
-Enter side b: 4
-Enter side c: 3
-The perimeter of the triangle is 12
-Get length and width of a rectangle using prompt. Calculate its area (area = length x width) and perimeter (perimeter = 2 x (length + width))
-Get radius of a circle using prompt. Calculate the area (area = pi x r x r) and circumference (c = 2 x pi x r) where pi = 3.14.
-Calculate the slope, x-intercept and y-intercept of y = 2x -2
-Slope is (m = y2-y1/x2-x1). Find the slope and Euclidean distance between point (2, 2) and point (6,10)
-Compare the slopes in tasks 8 and 9.
-Calculate the value of y (y = x^2 + 6x + 9). Try to use different x values and figure out at what x value y is going to be 0.
-Find the length of 'python' and 'dragon' and make a falsy comparison statement.
-Use and operator to check if 'on' is found in both 'python' and 'dragon'
-I hope this course is not full of jargon. Use in operator to check if jargon is in the sentence.
-There is no 'on' in both dragon and python
-Find the length of the text python and convert the value to float and convert it to string
-Even numbers are divisible by 2 and the remainder is zero. How do you check if a number is even or not using python?
-Check if the floor division of 7 by 3 is equal to the int converted value of 2.7.
-Check if type of '10' is equal to type of 10
-Check if int('9.8') is equal to 10
-Writ a script that prompts the user to enter hours and rate per hour. Calculate pay of the person?
-Enter hours: 40
-Enter rate per hour: 28
-Your weekly earning is 1120
-Write a script that prompts the user to enter number of years. Calculate the number of seconds a person can live. Assume a person can live hundred years
-Enter number of years you have lived: 100
-You have lived for 3153600000 seconds.
-Write a Python script that displays the following table
-1 1 1 1 1
-2 1 2 4 8
-3 1 3 9 27
-4 1 4 16 64
-5 1 5 25 125
-🎉 CONGRATULATIONS ! 🎉
+### **7. Identity Operators**
+Used to compare memory locations of two objects.
 
-<< Day 2 | Day 4 >>
+| Operator | Description             | Example    | Output |
+|----------|-------------------------|------------|--------|
+| `is`     | Same memory location    | `a is b`   | `True` |
+| `is not` | Different memory location| `a is not b` | `True`|
+
+**Example Code:**
+```python
+x = [1, 2, 3]
+y = [1, 2, 3]
+z = x
+
+print(x is z)       # True (z is the same object as x)
+print(x is y)       # False (x and y are different objects)
+print(x == y)       # True (x and y have the same values)
+```
+
+---
+
+### Summary:
+- **Arithmetic**: Basic math (`+`, `-`, `*`, `/`, etc.).
+- **Comparison**: Compare values (`==`, `!=`, `>`, `<`, etc.).
+- **Logical**: Combine conditions (`and`, `or`, `not`).
+- **Assignment**: Assign values (`=`, `+=`, `-=`).
+- **Bitwise**: Work with binary values (`&`, `|`, `^`, `~`).
+- **Membership**: Test for inclusion (`in`, `not in`).
+- **Identity**: Test memory location (`is`, `is not`).
