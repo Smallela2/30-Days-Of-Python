@@ -267,3 +267,100 @@ print(any(x > 2 for x in numbers))  # Output: True (Any number greater than 2)
 print(all(x > 0 for x in numbers))  # Output: True (All numbers are positive)
 ```
 
+1. Dynamic Lists: Modifying Lists During Iteration
+Directly modifying a list while iterating over it can lead to unexpected behavior. To avoid issues, you can:
+
+Use a temporary list.
+Iterate over a copy of the list.
+Example 1: Remove all negative numbers from a list.
+
+python
+Copy code
+numbers = [5, -1, 3, -2, 7]
+
+# Safe method: Using a temporary list
+positive_numbers = [num for num in numbers if num >= 0]
+print(positive_numbers)  # [5, 3, 7]
+
+# Unsafe method: Modifying the original list directly
+for num in numbers[:]:  # Iterate over a copy of the list
+    if num < 0:
+        numbers.remove(num)
+print(numbers)  # [5, 3, 7]
+Key Takeaway: Always be cautious and prefer list comprehensions or work on a copy of the list.
+
+2. List Overlap: Finding Common Elements Between Lists
+You can find common elements between two lists using:
+
+Set intersection (&)
+List comprehensions
+Example 1: Using Sets
+
+python
+Copy code
+list1 = [1, 2, 3, 4]
+list2 = [3, 4, 5, 6]
+
+common_elements = list(set(list1) & set(list2))
+print(common_elements)  # [3, 4]
+Example 2: Using List Comprehensions
+
+python
+Copy code
+common_elements = [item for item in list1 if item in list2]
+print(common_elements)  # [3, 4]
+Performance Note: Using sets is faster for large lists since set operations have average time complexity of 
+𝑂
+(
+𝑛
+)
+O(n).
+
+3. Using List as a Stack/Queue
+Python lists can simulate:
+
+Stack (LIFO - Last In, First Out)
+Queue (FIFO - First In, First Out)
+Stack (LIFO)
+Use append() to push and pop() to remove the last item.
+
+Example:
+
+python
+Copy code
+stack = []
+stack.append(1)  # Push 1
+stack.append(2)  # Push 2
+print(stack.pop())  # Remove and return the last item (2)
+print(stack)  # [1]
+Queue (FIFO)
+Use append() to enqueue and pop(0) to dequeue.
+
+Example:
+
+python
+Copy code
+queue = []
+queue.append(1)  # Enqueue 1
+queue.append(2)  # Enqueue 2
+print(queue.pop(0))  # Remove and return the first item (1)
+print(queue)  # [2]
+Performance Note: Using pop(0) is inefficient for large lists as it has 
+𝑂
+(
+𝑛
+)
+O(n) complexity. For efficient queues, use collections.deque.
+
+Efficient Queue with deque
+python
+Copy code
+from collections import deque
+
+queue = deque()
+queue.append(1)  # Enqueue
+queue.append(2)
+print(queue.popleft())  # Dequeue (1)
+print(queue)  # deque([2])
+
+
