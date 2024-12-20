@@ -267,100 +267,133 @@ print(any(x > 2 for x in numbers))  # Output: True (Any number greater than 2)
 print(all(x > 0 for x in numbers))  # Output: True (All numbers are positive)
 ```
 
-1. Dynamic Lists: Modifying Lists During Iteration
-Directly modifying a list while iterating over it can lead to unexpected behavior. To avoid issues, you can:
+## **1. Dynamic Lists: Modifying Lists During Iteration**
 
-Use a temporary list.
-Iterate over a copy of the list.
-Example 1: Remove all negative numbers from a list.
+### Problem:
+Modifying a list directly while iterating over it can cause unexpected behavior, as the list's size and indices may change.
 
-python
-Copy code
+### Solution 1: Use a Temporary List
+A safer approach is to create a new list based on the condition.
+
+**Example:**
+```python
 numbers = [5, -1, 3, -2, 7]
 
 # Safe method: Using a temporary list
 positive_numbers = [num for num in numbers if num >= 0]
-print(positive_numbers)  # [5, 3, 7]
+print(positive_numbers)  # Output: [5, 3, 7]
+```
+**Explanation:**
+- List comprehension creates a new list with only non-negative numbers.
+
+### Solution 2: Iterate Over a Copy
+Another approach is to iterate over a copy of the list using slicing (`numbers[:]`).
+
+**Example:**
+```python
+numbers = [5, -1, 3, -2, 7]
 
 # Unsafe method: Modifying the original list directly
 for num in numbers[:]:  # Iterate over a copy of the list
     if num < 0:
         numbers.remove(num)
-print(numbers)  # [5, 3, 7]
-Key Takeaway: Always be cautious and prefer list comprehensions or work on a copy of the list.
 
-2. List Overlap: Finding Common Elements Between Lists
-You can find common elements between two lists using:
+print(numbers)  # Output: [5, 3, 7]
+```
+**Explanation:**
+- The slicing (`numbers[:]`) creates a copy of the list to prevent modification issues.
 
-Set intersection (&)
-List comprehensions
-Example 1: Using Sets
+---
 
-python
-Copy code
+## **2. List Overlap: Finding Common Elements Between Lists**
+
+### Problem:
+You have two lists and want to find the elements common to both.
+
+### Solution 1: Using Sets
+The `set` data structure allows efficient intersection operations.
+
+**Example:**
+```python
 list1 = [1, 2, 3, 4]
 list2 = [3, 4, 5, 6]
 
+# Using set intersection
 common_elements = list(set(list1) & set(list2))
-print(common_elements)  # [3, 4]
-Example 2: Using List Comprehensions
+print(common_elements)  # Output: [3, 4]
+```
+**Explanation:**
+- `set(list1)` and `set(list2)` convert the lists into sets.
+- `&` performs the intersection operation to find common elements.
 
-python
-Copy code
+### Solution 2: Using List Comprehensions
+
+**Example:**
+```python
 common_elements = [item for item in list1 if item in list2]
-print(common_elements)  # [3, 4]
-Performance Note: Using sets is faster for large lists since set operations have average time complexity of 
-𝑂
-(
-𝑛
-)
-O(n).
+print(common_elements)  # Output: [3, 4]
+```
+**Explanation:**
+- The list comprehension iterates over `list1` and includes elements also present in `list2`.
 
-3. Using List as a Stack/Queue
-Python lists can simulate:
+**Performance Note:**
+- The set-based method is faster for large lists because set lookups are \(O(1)\), whereas `in` checks for lists are \(O(n)\).
 
-Stack (LIFO - Last In, First Out)
-Queue (FIFO - First In, First Out)
-Stack (LIFO)
-Use append() to push and pop() to remove the last item.
+---
 
-Example:
+## **3. Using List as a Stack/Queue**
 
-python
-Copy code
+### Stack (LIFO: Last In, First Out)
+A stack adds items to the end and removes items from the same end.
+
+**Example:**
+```python
 stack = []
 stack.append(1)  # Push 1
 stack.append(2)  # Push 2
-print(stack.pop())  # Remove and return the last item (2)
-print(stack)  # [1]
-Queue (FIFO)
-Use append() to enqueue and pop(0) to dequeue.
+print(stack.pop())  # Output: 2 (Remove the last item)
+print(stack)       # Output: [1]
+```
+**Explanation:**
+- `append()` adds items to the end.
+- `pop()` removes and returns the last item.
 
-Example:
+---
 
-python
-Copy code
+### Queue (FIFO: First In, First Out)
+A queue adds items to the end and removes items from the front.
+
+**Example:**
+```python
 queue = []
 queue.append(1)  # Enqueue 1
 queue.append(2)  # Enqueue 2
-print(queue.pop(0))  # Remove and return the first item (1)
-print(queue)  # [2]
-Performance Note: Using pop(0) is inefficient for large lists as it has 
-𝑂
-(
-𝑛
-)
-O(n) complexity. For efficient queues, use collections.deque.
+print(queue.pop(0))  # Output: 1 (Remove the first item)
+print(queue)         # Output: [2]
+```
+**Explanation:**
+- `append()` adds items to the end.
+- `pop(0)` removes and returns the first item.
 
-Efficient Queue with deque
-python
-Copy code
+**Performance Note:**
+- `pop(0)` is inefficient (\(O(n)\)) for large lists because all elements need to shift.
+- Use `collections.deque` for efficient queues.
+
+---
+
+### Efficient Queue with `deque`
+
+**Example:**
+```python
 from collections import deque
 
 queue = deque()
-queue.append(1)  # Enqueue
-queue.append(2)
-print(queue.popleft())  # Dequeue (1)
-print(queue)  # deque([2])
-
+queue.append(1)  # Enqueue 1
+queue.append(2)  # Enqueue 2
+print(queue.popleft())  # Output: 1 (Remove the first item)
+print(queue)            # Output: deque([2])
+```
+**Explanation:**
+- `deque` provides \(O(1)\) time complexity for operations on both ends.
+- Use `append()` to enqueue and `popleft()` to dequeue.
 
