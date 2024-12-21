@@ -170,3 +170,137 @@ Write a program to sort a tuple of integers.
 1. Create a tuple of 6 strings.
 2. Access the first, middle, and last elements.
 
+
+
+### **Advanced Tuple Topics**
+1. **Tuple Methods:**
+   - **`count()`**: Returns the number of occurrences of a specified value in a tuple.
+     ```python
+     tp = (1, 2, 2, 3, 4, 2)
+     print(tp.count(2))  # Output: 3
+     ```
+   - **`index()`**: Returns the first index of a specified value.
+     ```python
+     tp = (1, 2, 3, 4, 5)
+     print(tp.index(4))  # Output: 3
+     ```
+
+---
+
+2. **Unpacking Tuples:**
+   - Assigning tuple elements to variables.
+     ```python
+     tp = (1, 2, 3)
+     a, b, c = tp
+     print(a, b, c)  # Output: 1 2 3
+     ```
+
+   - Using `*` to unpack remaining elements.
+     ```python
+     tp = (1, 2, 3, 4, 5)
+     a, *rest, c = tp
+     print(a, rest, c)  # Output: 1 [2, 3, 4] 5
+     ```
+
+---
+
+3. **Tuple Slicing:**
+   - Extracting a portion of the tuple using slicing.
+     ```python
+     tp = (1, 2, 3, 4, 5)
+     print(tp[1:4])  # Output: (2, 3, 4)
+     ```
+
+---
+
+4. **Nested Tuples:**
+   - Accessing and manipulating data within nested tuples.
+     ```python
+     nested_tp = ((1, 2), (3, 4), (5, 6))
+     print(nested_tp[1][0])  # Output: 3
+     ```
+
+---
+
+5. **Iterating Through Tuples:**
+   - Using loops to iterate over tuple elements.
+     ```python
+     tp = (1, 2, 3, 4)
+     for item in tp:
+         print(item)
+     ```
+
+---
+
+6. **Tuples vs Lists:**
+   - **Immutable:** Tuples cannot be changed after creation, while lists are mutable.
+   - **Performance:** Tuples are generally faster than lists.
+   - **Use Case:** Use tuples when data should not be modified.
+
+---
+
+7. **Tuple Comprehensions (Using Generator Expressions):**
+   - Although tuples don’t support comprehensions directly, you can use a generator expression to create a tuple.
+     ```python
+     tp = tuple(x**2 for x in range(5))
+     print(tp)  # Output: (0, 1, 4, 9, 16)
+     ```
+
+---
+
+8. **Tuples with Functions:**
+   - Returning multiple values from a function using a tuple.
+     ```python
+     def min_max(nums):
+         return min(nums), max(nums)
+
+     result = min_max([1, 2, 3, 4, 5])
+     print(result)  # Output: (1, 5)
+     ```
+
+---
+
+9. **Tuples in Sets and Dictionaries:**
+   - Tuples can be used as keys in dictionaries or as elements in sets because they are hashable.
+     ```python
+     tp = (1, 2)
+     my_dict = {tp: "value"}
+     print(my_dict[(1, 2)])  # Output: value
+     ```
+
+---
+
+10. **Tuples for Fixed-Size Data:**
+    - Use tuples when the size of the data is constant, like coordinates, RGB values, or database records.
+
+---
+
+### **Specialized Topics**
+1. **Comparing Tuples:**
+   - Tuples are compared element by element.
+     ```python
+     print((1, 2) < (1, 3))  # Output: True
+     ```
+
+2. **Zip and Tuples:**
+   - Combining two or more sequences into a tuple using `zip()`.
+     ```python
+     names = ('Alice', 'Bob')
+     scores = (85, 90)
+     combined = tuple(zip(names, scores))
+     print(combined)  # Output: (('Alice', 85), ('Bob', 90))
+     ```
+
+3. **Tuples with Enumerate:**
+   - Enumerating a sequence to get index and value as a tuple.
+     ```python
+     tp = ('a', 'b', 'c')
+     for index, value in enumerate(tp):
+         print(index, value)
+     ```
+
+4. **Memory Usage of Tuples:**
+   - Tuples consume less memory than lists, making them more efficient for large datasets.
+
+---
+
