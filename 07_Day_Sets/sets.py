@@ -23,3 +23,15 @@ print(A.union(B) & B.union(A))
 print(A.symmetric_difference(B))
 del A
 del B
+
+
+#Exercise level 3
+age = [22, 19, 24, 25, 26, 24, 25, 24]
+my_set = set(age)
+print(my_set)
+if len(age) > len(my_set):
+    print("age is bigger")
+elif len(age) < len(my_set):
+    print("my_set is bigger")
+else:
+    print("Both are Equal")
