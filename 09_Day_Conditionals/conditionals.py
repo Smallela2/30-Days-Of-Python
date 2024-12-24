@@ -76,4 +76,39 @@ else:
 
 # level -3
 # question-1
+person={
+    'first_name': 'Asabeneh',
+    'last_name': 'Yetayeh',
+    'age': 250,
+    'country': 'Finland',
+    'is_marred': True,
+    'skills': ['JavaScript', 'React', 'Node', 'MongoDB', 'Python'],
+    'address': {
+        'street': 'Space street',
+        'zipcode': '02210'
+    }
+    }
+if "skills" in person :
+    skills = person['skills']
+    middle_skill = skills[len(skills) // 2]
+    print(f"The middle skill is: {middle_skill}")
+
+if 'skills' in person:
+    has_python = 'Python' in person['skills']
+    print(f"Has Python skill: {has_python}")
+
+if 'skills' in person:
+    skills = person['skills']
+    if set(skills) == {'JavaScript', 'React'}:
+        print("He is a front end developer")
+    elif {'Node', 'Python', 'MongoDB'}.issubset(skills):
+        print("He is a backend developer")
+    elif {'React', 'Node', 'MongoDB'}.issubset(skills):
+        print("He is a fullstack developer")
+    else:
+        print("unknown title")
+
+if person.get('is_marred') and person.get('country') == 'Finland':
+    full_name = f"{person['first_name']} {person['last_name']}"
+    print(f"{full_name} lives in Finland. He is married.")
 
