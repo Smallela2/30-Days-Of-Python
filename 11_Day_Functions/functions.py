@@ -20,3 +20,8 @@ def add_all_nums(*args):
 print(add_all_nums(2, 3, 4, 5))  # Valid input
 print(add_all_nums(2, '3', 4, 5))  # Invalid input (string in arguments)
 print(type(add_all_nums()))  # Type of the returned result
+
+def convert_celsius_to_fahrenheit(C):
+    F = (C*9/5)+32
+    return F
+print(convert_celsius_to_fahrenheit(1))
