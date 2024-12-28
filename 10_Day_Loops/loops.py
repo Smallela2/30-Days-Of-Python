@@ -36,4 +36,16 @@ for row in range(8):
 print("\nMultiplication Pattern:")
 for i in range(11):
     print(f"{i} x {i} = {i * i}")
+# level-2
+sum_evens = 0
+sum_odds = 0
+
+for i in range(101):  # Iterate from 0 to 100
+    if i % 2 == 0:  # Check if the number is even
+        sum_evens += i
+    else:  # Otherwise, it's odd
+        sum_odds += i
+
+print(f"The sum of all evens is {sum_evens}")
+print(f"The sum of all odds is {sum_odds}")
 
