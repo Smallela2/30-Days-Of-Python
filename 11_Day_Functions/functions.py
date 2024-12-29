@@ -75,3 +75,20 @@ print(solve_quadratic_eqn(1, -3, 2))  # Two roots
 print(solve_quadratic_eqn(1, 2, 1))   # One root
 print(solve_quadratic_eqn(1, 1, 1))   # No real roots
 
+
+def reverse_list(arr):
+    reversed_arr = []
+    for i in range(len(arr) - 1, -1, -1):  # Iterate from the last index to the first
+        reversed_arr.append(arr[i])
+    return reversed_arr
+
+print(reverse_list([1, 2, 3, 4, 5]))  # Example usage
+
+
+def capitalize_list_items(arr):
+    return_arr = []
+    for item in arr:
+        return_arr.append(item.capitalize())  # Capitalize each string and append it to the new list
+    return return_arr
+
+print(capitalize_list_items(["apple", "cat"]))
