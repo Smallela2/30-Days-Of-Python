@@ -181,6 +181,12 @@ def is_empty(value):
 print(is_empty([]))        # True (Empty list)
 print(is_empty({}))        # True (Empty dictionary)
 print(is_empty(""))        # True (Empty string)
+print(is_empty(0))         # True (0 is considered empty in Python)
+print(is_empty(None))      # True (None is empty)
+print(is_empty([1, 2, 3])) # False (Non-empty list)
+print(is_empty("hello"))   # False (Non-empty string)
+print(is_empty(42))        # False (Non-zero number)
+
 
 from collections import Counter
 import math
@@ -231,8 +237,3 @@ print("Range:", calculate_range(data))
 print("Variance:", calculate_variance(data))
 print("Standard Deviation:", calculate_std(data))
 
-print(is_empty(0))         # True (0 is considered empty in Python)
-print(is_empty(None))      # True (None is empty)
-print(is_empty([1, 2, 3])) # False (Non-empty list)
-print(is_empty("hello"))   # False (Non-empty string)
-print(is_empty(42))        # False (Non-zero number)
