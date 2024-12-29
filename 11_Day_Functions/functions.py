@@ -250,3 +250,35 @@ print("Standard Deviation:", calculate_std(data))
         return "not prime"
 print(is_prime(1))
 
+def are_items_unique(lst):
+    return len(lst) == len(set(lst))
+print(are_items_unique([1, 2, 3, 4])) 
+print(are_items_unique([1, 2, 2, 3]))
+
+def are_items_same_type(lst):
+    if not lst:  # Handle empty list
+        return True
+    first_type = type(lst[0])
+    return all(isinstance(item, first_type) for item in lst)
+
+# Example usage
+print(are_items_same_type([1, 2, 3]))       # True (all integers)
+print(are_items_same_type([1, "2", 3.0]))  # False (mixed types)
+print(are_items_same_type([]))             # True (empty list)
+
+import keyword
+
+def is_valid_variable(var):
+    if not var.isidentifier():  # Check if it's a valid identifier
+        return False
+    if keyword.iskeyword(var):  # Check if it's a reserved keyword
+        return False
+    return True
+
+# Example usage
+print(is_valid_variable("variable"))   # True
+print(is_valid_variable("2variable"))  # False (starts with a digit)
+print(is_valid_variable("def"))        # False (reserved keyword)
+print(is_valid_variable("_valid_var")) # True
+
+
