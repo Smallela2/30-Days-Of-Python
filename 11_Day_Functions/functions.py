@@ -237,3 +237,16 @@ print("Range:", calculate_range(data))
 print("Variance:", calculate_variance(data))
 print("Standard Deviation:", calculate_std(data))
 
+
+    if num <= 1:  
+        return "not prime"
+    count = 1
+    for i in range(1,num+1):
+        if num%i == 0:
+            count +=1
+    if count ==2:
+        return "prime"
+    else:
+        return "not prime"
+print(is_prime(1))
+
