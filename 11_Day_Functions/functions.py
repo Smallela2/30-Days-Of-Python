@@ -153,3 +153,36 @@ def sum_of_even(num):
             count +=i
     return count
 print(sum_of_even(10))
+
+
+def evens_and_odds(num):
+    even = 0
+    odd = 0
+    for i in range(num+1):
+        if i%2 == 0:
+            even +=1
+        else:
+            odd +=1
+    return f"The number of odds are {odd}.\nThe number of evens are {even}."    
+            
+
+print(evens_and_odds(100))
+
+import math
+def fact(num):
+    my_factorial = math.factorial(num)
+    return my_factorial
+print(fact(5))
+
+def is_empty(value):
+    return not bool(value)  # Check if the value evaluates to False (empty)
+
+# Example usage
+print(is_empty([]))        # True (Empty list)
+print(is_empty({}))        # True (Empty dictionary)
+print(is_empty(""))        # True (Empty string)
+print(is_empty(0))         # True (0 is considered empty in Python)
+print(is_empty(None))      # True (None is empty)
+print(is_empty([1, 2, 3])) # False (Non-empty list)
+print(is_empty("hello"))   # False (Non-empty string)
+print(is_empty(42))        # False (Non-zero number)
