@@ -92,3 +92,29 @@ def capitalize_list_items(arr):
     return return_arr
 
 print(capitalize_list_items(["apple", "cat"]))
+
+
+def add_item(lst, item):
+    lst.append(item)  # Add the item to the end of the list
+    return lst
+
+# Example usage
+food_staff = ['Potato', 'Tomato', 'Mango', 'Milk']
+print(add_item(food_staff, 'Meat'))  # ['Potato', 'Tomato', 'Mango', 'Milk', 'Meat']
+
+numbers = [2, 3, 7, 9]
+print(add_item(numbers, 5))  # [2, 3, 7, 9, 5]
+
+
+def remove_item(lst,item):
+    if item in lst:
+        lst.remove(item)
+    else:
+        return f" '{item}' not found in the list"
+    return lst
+
+food_staff = ['Potato', 'Tomato', 'Mango', 'Milk']
+print(remove_item(food_staff, 'Mango')) 
+
+numbers = [2, 3, 7, 9]
+print(remove_item(numbers, 3))
