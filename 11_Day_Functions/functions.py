@@ -118,3 +118,38 @@ print(remove_item(food_staff, 'Mango'))
 
 numbers = [2, 3, 7, 9]
 print(remove_item(numbers, 3))
+
+
+def sum_of_numbers(num):
+    count = 0
+    for i in range(1,num+1):
+        count = count+i
+    return count
+print(sum_of_numbers(5))
+print(sum_of_numbers(10))
+print(sum_of_numbers(100))
+
+def sum_of_odds(num):
+    count = 0
+    for i in range(1, num + 1):  # Iterate through all numbers from 1 to num
+        if i % 2 != 0:  # Check if the number is odd
+            count += i  # Add the odd number to the count
+    return count
+
+print(sum_of_odds(10))  # Example usage
+def sum_of_odds(num):
+    count = 0
+    for i in range(1,num+1,2):
+        count = count+i
+    return count
+
+print(sum_of_odds(10))
+
+
+def sum_of_even(num):
+    count = 0
+    for i in range(1,num+1):
+        if i%2 == 0:
+            count +=i
+    return count
+print(sum_of_even(10))
