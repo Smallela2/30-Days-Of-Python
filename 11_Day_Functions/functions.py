@@ -181,6 +181,56 @@ def is_empty(value):
 print(is_empty([]))        # True (Empty list)
 print(is_empty({}))        # True (Empty dictionary)
 print(is_empty(""))        # True (Empty string)
+
+from collections import Counter
+import math
+
+def calculate_mean(data):
+    return sum(data) / len(data) if data else 0
+
+def calculate_median(data):
+    n = len(data)
+    if n == 0:
+        return 0  # Handle empty list
+    data_sorted = sorted(data)
+    mid = n // 2
+    if n % 2 == 0:
+        return (data_sorted[mid - 1] + data_sorted[mid]) / 2  # Even length
+    else:
+        return data_sorted[mid]  # Odd length
+
+def calculate_mode(data):
+    if not data:
+        return None  # Handle empty list
+    count = Counter(data)
+    max_freq = max(count.values())
+    modes = [key for key, value in count.items() if value == max_freq]
+    return modes if len(modes) > 1 else modes[0]  # Return a list if multiple modes exist
+
+def calculate_range(data):
+    if not data:
+        return 0  # Handle empty list
+    return max(data) - min(data)
+
+def calculate_variance(data):
+    if len(data) < 2:
+        return 0  # Variance is undefined for lists with less than 2 elements
+    mean = calculate_mean(data)
+    return sum((x - mean) ** 2 for x in data) / len(data)
+
+def calculate_std(data):
+    return math.sqrt(calculate_variance(data))  # Standard deviation is the square root of variance
+
+# Example usage
+data = [1, 2, 2, 3, 4, 4, 4, 5]
+
+print("Mean:", calculate_mean(data))
+print("Median:", calculate_median(data))
+print("Mode:", calculate_mode(data))
+print("Range:", calculate_range(data))
+print("Variance:", calculate_variance(data))
+print("Standard Deviation:", calculate_std(data))
+
 print(is_empty(0))         # True (0 is considered empty in Python)
 print(is_empty(None))      # True (None is empty)
 print(is_empty([1, 2, 3])) # False (Non-empty list)
