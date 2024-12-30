@@ -30,3 +30,14 @@ def user_id_gen_by_user():
 print(user_id_gen_by_user())
 
 
+from random import randint
+def rgb_color_gen():
+     r = randint(0, 255)
+     g = randint(0, 255)
+     b = randint(0, 255)
+    # Return the formatted RGB string
+     return f"rgb({r},{g},{b})"
+
+# Test the function
+print(rgb_color_gen())
+    
