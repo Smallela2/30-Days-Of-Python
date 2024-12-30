@@ -45,3 +45,20 @@ result = [
 
 print(result)
 
+
+# Lambda to calculate slope
+slope = lambda x1, y1, x2, y2: (y2 - y1) / (x2 - x1) if x2 != x1 else 'Undefined (vertical line)'
+
+# Lambda to calculate y-intercept
+y_intercept = lambda x1, y1, m: y1 - m * x1
+
+# Example usage
+x1, y1 = 1, 2
+x2, y2 = 3, 6
+
+m = slope(x1, y1, x2, y2)  # Calculate slope
+c = y_intercept(x1, y1, m) if isinstance(m, (int, float)) else 'N/A'  # Calculate y-intercept if slope is defined
+
+print(f"Slope: {m}")
+print(f"Y-Intercept: {c}")
+
