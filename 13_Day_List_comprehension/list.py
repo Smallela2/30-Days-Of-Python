@@ -8,3 +8,6 @@ flatten_list = [number for row in list_of_lists  for number in row]
 lst = [number for row in flatten_list  for number in row]
 print(lst)
 
+
+lst = [(i,1,i,i*i,i*i*i,i*i*i*i,i*i*i*i*i) for i in range(0,11)]
+print(lst)
