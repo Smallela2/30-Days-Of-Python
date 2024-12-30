@@ -11,3 +11,15 @@ print(lst)
 
 lst = [(i,1,i,i*i,i*i*i,i*i*i*i,i*i*i*i*i) for i in range(0,11)]
 print(lst)
+
+
+countries = [[('Finland', 'Helsinki')], [('Sweden', 'Stockholm')], [('Norway', 'Oslo')]]
+
+# Flatten and transform the data
+result = [
+    [country.upper(), country[:3].upper(), capital.upper()]
+    for sublist in countries
+    for country, capital in sublist
+]
+
+print(result)
