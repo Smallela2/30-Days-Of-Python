@@ -35,3 +35,13 @@ result = [
 ]
 
 print(result)
+
+
+result = [
+    f"{first} {last}" 
+    for sublist in names 
+    for first, last in sublist
+]
+
+print(result)
+
