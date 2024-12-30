@@ -40,4 +40,32 @@ def rgb_color_gen():
 
 # Test the function
 print(rgb_color_gen())
-    
+
+
+from random import randint
+
+def list_of_hexa_colors(count):
+    colors = []
+    for _ in range(count):
+        hex_color = f"#{randint(0, 255):02x}{randint(0, 255):02x}{randint(0, 255):02x}"
+        colors.append(hex_color)
+    return colors
+
+
+def list_of_rgb_colors(count):
+    colors = []
+    for _ in range(count):
+        r, g, b = randint(0, 255), randint(0, 255), randint(0, 255)
+        rgb_color = f"rgb({r},{g},{b})"
+        colors.append(rgb_color)
+    return colors
+
+
+def generate_colors(color_type, count):
+    if color_type == 'hexa':
+        return list_of_hexa_colors(count)
+    elif color_type == 'rgb':
+        return list_of_rgb_colors(count)
+    else:
+        return "Invalid color type. Use 'hexa' or 'rgb'."
+
