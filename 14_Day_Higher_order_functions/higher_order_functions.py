@@ -90,3 +90,86 @@ from functools import reduce
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 sum_numbers = reduce(lambda x, y: x + y, numbers)
 print(sum_numbers)
+
+
+from functools import reduce
+from collections import Counter
+
+# 1. Use reduce to concatenate all the countries into a sentence
+countries = ['Estonia', 'Finland', 'Sweden', 'Denmark', 'Norway', 'Iceland']
+sentence = reduce(
+    lambda x, y: f"{x}, {y}" if y != 'Iceland' else f"{x}, and {y}",
+    countries
+) + " are north European countries."
+print(sentence)
+
+# 2. Declare categorize_countries
+def categorize_countries(pattern):
+    """
+    Returns a list of countries with a common pattern.
+    """
+    return [country for country in countries if pattern in country]
+
+print(categorize_countries('land'))  # ['Finland', 'Iceland']
+
+# 3. Return a dictionary of countries grouped by starting letter
+def count_countries_by_letter(countries):
+    """
+    Creates a dictionary where keys are starting letters and values are counts.
+    """
+    country_dict = {}
+    for country in countries:
+        first_letter = country[0].upper()
+        country_dict[first_letter] = country_dict.get(first_letter, 0) + 1
+    return country_dict
+
+print(count_countries_by_letter(countries))
+
+# 4. Declare get_first_ten_countries
+def get_first_ten_countries(countries):
+    """
+    Returns the first ten countries from the list.
+    """
+    return countries[:10]
+
+print(get_first_ten_countries(countries))
+
+# 5. Declare get_last_ten_countries
+def get_last_ten_countries(countries):
+    """
+    Returns the last ten countries from the list.
+    """
+    return countries[-10:]
+
+print(get_last_ten_countries(countries))
+
+# 6. Sort countries by name, capital, population
+# Assuming you have imported countries_data.py
+from countries_data import countries_data
+
+# Sort by name
+sorted_by_name = sorted(countries_data, key=lambda x: x['name'])
+# Sort by capital
+sorted_by_capital = sorted(countries_data, key=lambda x: x['capital'])
+# Sort by population
+sorted_by_population = sorted(countries_data, key=lambda x: x['population'], reverse=True)
+
+print("Sorted by name:", [country['name'] for country in sorted_by_name[:5]])
+print("Sorted by capital:", [country['capital'] for country in sorted_by_capital[:5]])
+print("Sorted by population:", [country['name'] for country in sorted_by_population[:5]])
+
+# 7. Sort out the ten most spoken languages
+def most_spoken_languages(countries_data, top_n=10):
+    languages = []
+    for country in countries_data:
+        languages.extend(country['languages'])
+    language_counts = Counter(languages)
+    return language_counts.most_common(top_n)
+
+print(most_spoken_languages(countries_data))
+
+# 8. Sort out the ten most populated countries
+def most_populated_countries(countries_data, top_n=10):
+    return sorted(countries_data, key=lambda x: x['population'], reverse=True)[:top_n]
+
+print(most_populated_countries(countries_data))
