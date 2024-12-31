@@ -7,3 +7,9 @@ for name in names:
     print(name)
 for number in numbers:
     print(number)
+
+
+countries =['Estonia', 'Finland', 'Sweden', 'Denmark', 'Norway', 'Iceland']
+countries_uppercase = list(map(lambda country: country.upper(), countries))
+
+print(countries_uppercase)
