@@ -33,3 +33,13 @@ def country(name):
 
 names = filter(country,countries)
 print(list(names))
+
+
+countries = ['Estonia', 'Finland', 'Sweden', 'Denmark', 'Norway', 'Iceland']
+def country(name):
+    if len(name) == 6:
+        return True
+    return False
+
+names = filter(country,countries)
+print(list(names))
