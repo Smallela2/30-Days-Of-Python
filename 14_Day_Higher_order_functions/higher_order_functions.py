@@ -84,3 +84,9 @@ def get_string_lists(input_list):
 mixed_list = [1, 'hello', 3.14, 'world', True, 'Python']
 string_list = get_string_lists(mixed_list)
 print(string_list)
+
+
+from functools import reduce
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+sum_numbers = reduce(lambda x, y: x + y, numbers)
+print(sum_numbers)
