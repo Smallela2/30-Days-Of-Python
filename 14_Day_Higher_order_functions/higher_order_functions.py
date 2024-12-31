@@ -13,3 +13,8 @@ countries =['Estonia', 'Finland', 'Sweden', 'Denmark', 'Norway', 'Iceland']
 countries_uppercase = list(map(lambda country: country.upper(), countries))
 
 print(countries_uppercase)
+
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+square_numbers = list(map(lambda x: x*x,numbers))
+print(square_numbers)
