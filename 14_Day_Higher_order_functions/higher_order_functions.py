@@ -59,3 +59,21 @@ def country(name):
 
 names = filter(country,countries)
 print(list(names))
+
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+# Filter: Keep only even numbers
+even_numbers = filter(lambda num: num % 2 == 0, numbers)
+
+# Map: Square each number
+squared_numbers = map(lambda num: num**2, even_numbers)
+
+# Reduce: Sum up all the squared numbers
+sum_of_squares = reduce(lambda x, y: x + y, squared_numbers)
+
+# Print intermediate results and final result
+print("Filtered (Even Numbers):", list(filter(lambda num: num % 2 == 0, numbers)))
+print("Mapped (Squares):", list(map(lambda num: num**2, filter(lambda num: num % 2 == 0, numbers))))
+print("Reduced (Sum of Squares):", sum_of_squares)
+
