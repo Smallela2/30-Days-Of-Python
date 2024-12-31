@@ -49,3 +49,13 @@ countries = ['Estonia', 'Finland', 'Sweden', 'Denmark', 'Norway', 'Iceland']
 
 filtered_countries = filter(lambda name: len(name) >= 6, countries)
 print(list(filtered_countries))
+
+
+countries = ['Estonia', 'Finland', 'Sweden', 'Denmark', 'Norway', 'Iceland']
+def country(name):
+    if name.startswith('E'):
+        return True
+    return False
+
+names = filter(country,countries)
+print(list(names))
