@@ -43,3 +43,9 @@ def country(name):
 
 names = filter(country,countries)
 print(list(names))
+
+
+countries = ['Estonia', 'Finland', 'Sweden', 'Denmark', 'Norway', 'Iceland']
+
+filtered_countries = filter(lambda name: len(name) >= 6, countries)
+print(list(filtered_countries))
