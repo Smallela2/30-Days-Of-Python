@@ -23,3 +23,13 @@ print(square_numbers)
 names = ['Asabeneh', 'Lidiya', 'Ermias', 'Abraham']
 upper_names = list(map(lambda name: name.upper(),names))
 print(upper_names)
+
+
+countries = ['Estonia', 'Finland', 'Sweden', 'Denmark', 'Norway', 'Iceland']
+def country(name):
+    if "land" in name:
+        return True
+    return False
+
+names = filter(country,countries)
+print(list(names))
