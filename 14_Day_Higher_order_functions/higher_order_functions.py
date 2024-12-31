@@ -77,3 +77,10 @@ print("Filtered (Even Numbers):", list(filter(lambda num: num % 2 == 0, numbers)
 print("Mapped (Squares):", list(map(lambda num: num**2, filter(lambda num: num % 2 == 0, numbers))))
 print("Reduced (Sum of Squares):", sum_of_squares)
 
+
+def get_string_lists(input_list):
+    return list(filter(lambda item: isinstance(item, str), input_list))
+
+mixed_list = [1, 'hello', 3.14, 'world', True, 'Python']
+string_list = get_string_lists(mixed_list)
+print(string_list)
