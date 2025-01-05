@@ -247,3 +247,209 @@ Example:
 pattern = r"(?<=\$)\d+"
 print(re.findall(pattern, "Price: $100"))  # Output: ['100']
 ```
+
+
+Yes! Beyond the basic and intermediate topics, the Python `re` module also has **advanced concepts** that can take your understanding of regular expressions to the next level. Here's a comprehensive look at these advanced topics:
+
+---
+
+### **1. Advanced Pattern Matching**
+
+#### **a) Non-Capturing Groups `(?:...)`**
+- Groups a part of the pattern without capturing it (useful for grouping but ignoring the result).
+
+Example:
+```python
+pattern = r"(?:hello|hi) world"
+print(re.findall(pattern, "hello world hi world"))  # Output: ['hello world', 'hi world']
+```
+
+---
+
+#### **b) Backreferences `(\\n)`**
+- Refers to a previously captured group by its index.
+
+Example:
+```python
+pattern = r"(\b\w+)\s+\1"
+print(re.search(pattern, "hello hello world"))  # Output: <re.Match object; span=(0, 11), match='hello hello'>
+```
+
+---
+
+#### **c) Named Backreferences**
+- Refers to a named group using `(?P=name)`.
+
+Example:
+```python
+pattern = r"(?P<word>\w+)\s+(?P=word)"
+print(re.search(pattern, "hello hello world"))  # Output: <re.Match object; span=(0, 11), match='hello hello'>
+```
+
+---
+
+### **2. Conditional Matching**
+- Allows you to check if a specific group exists using `(?(id)yes|no)`.
+
+Example:
+```python
+pattern = r"(?:(\d)|(\w))(?(1) is a digit| is a word)"
+print(re.search(pattern, "9 is a digit"))  # Output: <re.Match object; span=(0, 1), match='9'>
+```
+
+---
+
+### **3. Recursive Patterns**
+- Matches patterns that can recursively refer to themselves. Useful for parsing nested structures like parentheses.
+
+Example:
+```python
+pattern = r"\((?:[^\(\)]|(?R))*\)"
+print(re.findall(pattern, "(nested (inside))"))  # Output: ['(inside)']
+```
+
+---
+
+### **4. Atomic Groups `(?>...)`**
+- Prevents backtracking into the group, making the match faster and more predictable.
+
+Example:
+```python
+pattern = r"(?>\d+)\d"
+print(re.search(pattern, "12345"))  # Output: None (backtracking is disabled)
+```
+
+---
+
+### **5. Possessive Quantifiers (Unavailable in Python)**
+- Python doesn't support possessive quantifiers like `*+`, `++`. To mimic this behavior, use atomic groups.
+
+---
+
+### **6. Unicode Matching**
+
+#### **a) Matching Unicode Categories**
+- Match specific Unicode character classes using `\p{}` syntax.
+
+Example:
+```python
+pattern = r"\p{Lu}"  # Matches uppercase letters
+# Requires the `regex` module, not `re`.
+```
+
+#### **b) Extended Unicode Support**
+- Enable full Unicode matching with the `re.UNICODE` flag.
+
+---
+
+### **7. Flags in Detail**
+
+#### **a) `re.ASCII` (`re.A`)**
+- Ensures patterns like `\w`, `\d`, etc., match only ASCII characters.
+
+#### **b) `re.LOCALE` (`re.L`)**
+- Matches according to the current locale.
+
+#### **c) Combining Flags**
+- Use the bitwise OR (`|`) operator to combine multiple flags.
+
+Example:
+```python
+pattern = r"hello"
+result = re.search(pattern, "HELLO", re.IGNORECASE | re.MULTILINE)
+print(result)  # Output: <re.Match object>
+```
+
+---
+
+### **8. Performance Optimization**
+
+#### **a) Compile Regular Expressions**
+- Use `re.compile()` to pre-compile patterns for reuse, especially in loops.
+
+Example:
+```python
+pattern = re.compile(r"\d+")
+print(pattern.findall("123 456"))
+```
+
+#### **b) Avoid Backtracking**
+- Design patterns to minimize unnecessary backtracking for better performance.
+
+#### **c) Debugging Patterns**
+- Use `re.DEBUG` to visualize how the pattern is parsed.
+
+Example:
+```python
+re.compile(r"\d+", re.DEBUG)
+```
+
+---
+
+### **9. Using the `regex` Module for Advanced Features**
+The `regex` module is an alternative to `re` that adds features like:
+- Full Unicode support.
+- Possessive quantifiers.
+- Named character sets.
+- Recursive patterns.
+
+Install it using:
+```bash
+pip install regex
+```
+
+Example:
+```python
+import regex
+pattern = r"(?:[A-Z]){2,}"
+print(regex.findall(pattern, "ABcdEF"))
+```
+
+---
+
+### **10. Practical Applications of Regular Expressions**
+
+#### **a) Validating Input**
+- Email, phone numbers, and password validation.
+
+Example:
+```python
+pattern = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+print(re.match(pattern, "example@example.com"))  # Output: Match
+```
+
+---
+
+#### **b) Text Normalization**
+- Removing unwanted characters, such as HTML tags or extra spaces.
+
+Example:
+```python
+pattern = r"<.*?>"
+text = "<html><body>Hello!</body></html>"
+print(re.sub(pattern, "", text))  # Output: Hello!
+```
+
+---
+
+#### **c) Data Extraction**
+- Extract specific patterns from logs, CSV files, or JSON.
+
+Example:
+```python
+pattern = r"\d{4}-\d{2}-\d{2}"
+log = "Error on 2025-01-01, fixed on 2025-01-05"
+print(re.findall(pattern, log))  # Output: ['2025-01-01', '2025-01-05']
+```
+
+---
+
+#### **d) Parsing Nested Structures**
+- Extract nested parentheses or JSON-like structures.
+
+Example:
+```python
+pattern = r"\{(?:[^{}]++|(?R))*\}"
+print(re.findall(pattern, '{"key": {"nested_key": "value"}}'))
+```
+
