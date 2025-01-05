@@ -1,143 +1,249 @@
 
 
-### **1. Regular Expressions**
-Regular Expressions are patterns used to match character combinations in strings. They allow us to search, edit, or manipulate text based on defined patterns.
+### **1. Introduction to `re` Module**
+The `re` module in Python provides support for working with Regular Expressions (RegEx). It allows you to search, match, and manipulate text based on patterns.
 
 ---
 
-### **2. The `re` Module**
-The `re` module in Python provides functionalities to work with Regular Expressions. It includes methods for matching, searching, replacing, and splitting strings.
-
-To use it:
-```python
-import re
-```
-
----
-
-### **3. Methods in `re` Module**
+### **2. Core Functions in `re` Module**
 
 #### **a) `re.match()`**
-Checks for a match only at the beginning of the string.
+- Checks if the pattern matches at the beginning of the string.
+- Returns a match object or `None`.
+
+Example:
 ```python
 import re
-pattern = r"hello"
-result = re.match(pattern, "hello world")
+result = re.match(r"hello", "hello world")
 print(result)  # Output: <re.Match object; span=(0, 5), match='hello'>
 ```
 
+---
+
 #### **b) `re.search()`**
-Searches for the pattern throughout the string and returns the first match.
+- Searches for the first occurrence of the pattern anywhere in the string.
+- Returns a match object or `None`.
+
+Example:
 ```python
-pattern = r"world"
-result = re.search(pattern, "hello world")
+result = re.search(r"world", "hello world")
 print(result)  # Output: <re.Match object; span=(6, 11), match='world'>
 ```
 
+---
+
 #### **c) `re.findall()`**
-Finds all occurrences of the pattern in the string.
+- Finds all occurrences of the pattern in the string.
+- Returns a list of matches.
+
+Example:
 ```python
-pattern = r"o"
-result = re.findall(pattern, "hello world")
-print(result)  # Output: ['o', 'o']
+result = re.findall(r"\d", "123abc456")
+print(result)  # Output: ['1', '2', '3', '4', '5', '6']
 ```
 
-#### **d) `re.sub()`**
-Replaces occurrences of the pattern with a given string.
+---
+
+#### **d) `re.finditer()`**
+- Similar to `re.findall()` but returns an iterator of match objects instead of a list.
+
+Example:
 ```python
-pattern = r"world"
-result = re.sub(pattern, "Python", "hello world")
+matches = re.finditer(r"\d", "123abc456")
+for match in matches:
+    print(match)  # Outputs match objects for each digit
+```
+
+---
+
+#### **e) `re.sub()`**
+- Replaces occurrences of a pattern with a replacement string.
+
+Example:
+```python
+result = re.sub(r"world", "Python", "hello world")
 print(result)  # Output: hello Python
 ```
 
-#### **e) `re.split()`**
-Splits the string at every match of the pattern.
+---
+
+#### **f) `re.split()`**
+- Splits a string at each match of the pattern.
+
+Example:
 ```python
-pattern = r"\s"
-result = re.split(pattern, "hello world")
+result = re.split(r"\s", "hello world")
 print(result)  # Output: ['hello', 'world']
 ```
 
 ---
 
-### **4. Writing RegEx Patterns**
+#### **g) `re.fullmatch()`**
+- Checks if the whole string matches the pattern.
+- Returns a match object or `None`.
 
-#### **a) Square Bracket `[ ]`**
-Defines a set of characters to match.
+Example:
 ```python
-pattern = r"[aeiou]"
-result = re.findall(pattern, "hello world")
-print(result)  # Output: ['e', 'o', 'o']
-```
-
-#### **b) Escape Character `\`**
-Used to escape special characters.
-```python
-pattern = r"\."
-result = re.search(pattern, "www.example.com")
-print(result)  # Output: <re.Match object; span=(3, 4), match='.'>
-```
-
-#### **c) One or More Times `+`**
-Matches one or more occurrences of the preceding character.
-```python
-pattern = r"a+"
-result = re.findall(pattern, "aaaabbb")
-print(result)  # Output: ['aaaa']
-```
-
-#### **d) Period `.`**
-Matches any single character except a newline.
-```python
-pattern = r"h.llo"
-result = re.search(pattern, "hello")
-print(result)  # Output: <re.Match object; span=(0, 5), match='hello'>
-```
-
-#### **e) Zero or More Times `*`**
-Matches zero or more occurrences of the preceding character.
-```python
-pattern = r"ho*"
-result = re.findall(pattern, "ho hoooo h")
-print(result)  # Output: ['ho', 'hoooo', 'h']
-```
-
-#### **f) Zero or One Time `?`**
-Matches zero or one occurrence of the preceding character.
-```python
-pattern = r"colou?r"
-result = re.findall(pattern, "color colour")
-print(result)  # Output: ['color', 'colour']
-```
-
-#### **g) Quantifier `{n, m}`**
-Matches a specific number of occurrences.
-- `{n}`: Exactly `n` times
-- `{n,}`: At least `n` times
-- `{n, m}`: Between `n` and `m` times
-```python
-pattern = r"a{2,4}"
-result = re.findall(pattern, "aaa aaaaa")
-print(result)  # Output: ['aaa', 'aaaa']
+result = re.fullmatch(r"\d+", "12345")
+print(result)  # Output: <re.Match object; span=(0, 5), match='12345'>
 ```
 
 ---
 
-### **5. `^` (Caret)**
-Indicates the start of a string or negation inside square brackets.
+### **3. Match Object Methods**
 
-#### **a) Start of a String**
+The match object returned by `re.match()`, `re.search()`, and other methods has several useful methods:
+
+- **`group()`**: Returns the matched string.
+- **`start()`**: Returns the start position of the match.
+- **`end()`**: Returns the end position of the match.
+- **`span()`**: Returns a tuple of the start and end positions.
+
+Example:
 ```python
-pattern = r"^hello"
-result = re.match(pattern, "hello world")
-print(result)  # Output: <re.Match object; span=(0, 5), match='hello'>
+match = re.search(r"world", "hello world")
+if match:
+    print(match.group())  # Output: world
+    print(match.start())  # Output: 6
+    print(match.end())    # Output: 11
+    print(match.span())   # Output: (6, 11)
 ```
 
-#### **b) Negation Inside Square Brackets**
-`[^abc]` matches any character except `a`, `b`, or `c`.
+---
+
+### **4. Special Characters and Escape Sequences**
+
+#### **a) `.` (Dot)**
+Matches any character except a newline.
+
+#### **b) `\` (Escape Character)**
+Escapes special characters or defines sequences like:
+- `\d`: Matches digits.
+- `\D`: Matches non-digits.
+- `\w`: Matches word characters.
+- `\W`: Matches non-word characters.
+- `\s`: Matches whitespace.
+- `\S`: Matches non-whitespace.
+
+---
+
+### **5. Anchors**
+
+#### **a) `^` (Caret)**
+Matches the start of a string.
+
+#### **b) `$` (Dollar Sign)**
+Matches the end of a string.
+
+Example:
 ```python
-pattern = r"[^aeiou]"
-result = re.findall(pattern, "hello world")
-print(result)  # Output: ['h', 'l', 'l', ' ', 'w', 'r', 'l', 'd']
+print(re.search(r"^hello", "hello world"))  # Matches
+print(re.search(r"world$", "hello world"))  # Matches
 ```
 
+---
+
+### **6. Character Classes**
+
+#### **a) `[ ]`**
+Matches any one of the characters inside the brackets.
+
+#### **b) `[^ ]`**
+Matches any character NOT in the brackets.
+
+Example:
+```python
+print(re.findall(r"[aeiou]", "hello world"))  # Vowels
+print(re.findall(r"[^aeiou]", "hello world"))  # Non-vowels
+```
+
+---
+
+### **7. Quantifiers**
+
+#### **a) `*`**
+Matches 0 or more occurrences.
+
+#### **b) `+`**
+Matches 1 or more occurrences.
+
+#### **c) `?`**
+Matches 0 or 1 occurrence.
+
+#### **d) `{n}`**
+Matches exactly `n` occurrences.
+
+#### **e) `{n,}`**
+Matches `n` or more occurrences.
+
+#### **f) `{n,m}`**
+Matches between `n` and `m` occurrences.
+
+Example:
+```python
+print(re.findall(r"a+", "aaabbbaaa"))  # Output: ['aaa', 'aaa']
+print(re.findall(r"a{2,4}", "aaabbbaaa"))  # Output: ['aaa', 'aaa']
+```
+
+---
+
+### **8. Flags**
+
+- **`re.IGNORECASE` (`re.I`)**: Case-insensitive matching.
+- **`re.MULTILINE` (`re.M`)**: Makes `^` and `$` match start/end of each line.
+- **`re.DOTALL` (`re.S`)**: Makes `.` match newlines.
+- **`re.VERBOSE` (`re.X`)**: Allows comments and better formatting in patterns.
+
+Example:
+```python
+pattern = r""" 
+    \d+   # Match digits
+    \s*   # Match whitespace
+"""
+print(re.findall(pattern, "123 abc", re.VERBOSE))
+```
+
+---
+
+### **9. Groups and Capturing**
+
+#### **a) Grouping with `()`**
+Groups parts of a pattern.
+
+#### **b) Named Groups with `(?P<name>...)`**
+Creates named capturing groups.
+
+#### **c) Accessing Groups**
+- Use `group(n)` for groups by index.
+- Use `groupdict()` for named groups.
+
+Example:
+```python
+pattern = r"(\d{3})-(\d{2})-(\d{4})"
+match = re.match(pattern, "123-45-6789")
+if match:
+    print(match.group(1))  # Output: 123
+    print(match.groups())  # Output: ('123', '45', '6789')
+```
+
+---
+
+### **10. Lookahead and Lookbehind**
+
+#### **a) Positive Lookahead `(?=...)`**
+Matches if the pattern inside `()` exists after the current position.
+
+#### **b) Negative Lookahead `(?!...)`**
+Matches if the pattern inside `()` does NOT exist after the current position.
+
+#### **c) Positive Lookbehind `(?<=...)`**
+Matches if the pattern inside `()` exists before the current position.
+
+#### **d) Negative Lookbehind `(?<!...)`**
+Matches if the pattern inside `()` does NOT exist before the current position.
+
+Example:
+```python
+pattern = r"(?<=\$)\d+"
+print(re.findall(pattern, "Price: $100"))  # Output: ['100']
+```
